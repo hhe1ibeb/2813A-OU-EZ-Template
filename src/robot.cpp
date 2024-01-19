@@ -7,7 +7,7 @@ const int R1 = 17;
 const int R2 = 13;
 const int R3 = 19;
 
-const int FLYWHEEL = 20;
+const int FLYWHEEL = -20;
 
 const int INTAKE = 11;
 

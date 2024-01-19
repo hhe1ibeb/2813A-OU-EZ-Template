@@ -130,17 +130,22 @@ void far_qual(){
   // initialize
   chassis.set_angle(0);
   blocker.set_value(1);
-
   intake.move_velocity(200);
 
   // push alliance triball to the middle
-  chassis.set_drive_pid(24, DRIVE_SPEED);
-  chassis.wait_until(20);
-  intake.move_velocity(-100);
+  chassis.set_drive_pid(30, DRIVE_SPEED);
   chassis.wait_drive();
 
-  // fetch middle triball and push 3 in goal
   intake.move_velocity(0);
+
+  chassis.set_turn_pid(45, TURN_SPEED);
+  chassis.wait_drive();
+
+  intake.move_velocity(-300);
+  pros::delay(500);
+
+
+  // fetch middle triball and push 3 in goal
   
   chassis.set_turn_pid(-45, TURN_SPEED);
   chassis.wait_drive();
@@ -153,7 +158,7 @@ void far_qual(){
   chassis.set_turn_pid(90, TURN_SPEED);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(28, DRIVE_SPEED);
+  chassis.set_drive_pid(30, DRIVE_SPEED);
   chassis.wait_until(8);
   intake.move_velocity(0);
   chassis.wait_drive();
@@ -167,14 +172,14 @@ void far_qual(){
 
   intake.move_velocity(200);
 
-  chassis.set_drive_pid(20, DRIVE_SPEED);
+  chassis.set_drive_pid(24, DRIVE_SPEED);
   chassis.wait_drive();
 
   // push triball in
   chassis.set_turn_pid(75, TURN_SPEED);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(30, DRIVE_SPEED);
+  chassis.set_drive_pid(32, DRIVE_SPEED);
   chassis.wait_until(20);
   intake.move_velocity(0);
   chassis.wait_drive();
@@ -189,7 +194,7 @@ void far_qual(){
   chassis.set_turn_pid(0, TURN_SPEED);
   chassis.wait_drive();
   
-  chassis.set_drive_pid(-26, DRIVE_SPEED);
+  chassis.set_drive_pid(-28, DRIVE_SPEED);
   chassis.wait_drive();
 
   chassis.set_turn_pid(90, TURN_SPEED);
@@ -206,16 +211,16 @@ void far_qual(){
 /// 
 void near_elim(){
   // initialize
-  chassis.set_angle(180);
+  chassis.set_angle(0);
   intake.move_velocity(200);
   blocker.set_value(1);
 
   // push two triballs to own side
 
-  chassis.set_drive_pid(-48, DRIVE_SPEED);
+  chassis.set_drive_pid(46, DRIVE_SPEED);
   chassis.wait_drive();
 
-  chassis.set_turn_pid(270, TURN_SPEED);
+  chassis.set_turn_pid(-90, TURN_SPEED);
   chassis.wait_drive();
 
   open_wings();
@@ -226,12 +231,48 @@ void near_elim(){
   close_wings();
 
   // push alliance triball in opponent goal
-  intake.move_velocity(-600);
+  intake.move_velocity(-300);
 
-  chassis.set_drive_pid(24, DRIVE_SPEED);
+  chassis.set_drive_pid(26, DRIVE_SPEED);
   chassis.wait_drive();
 
   intake.move_velocity(0);
+
+  // push triball from load zone
+
+  chassis.set_turn_pid(0, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-30, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(90, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-26, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(0, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-10, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-45, TURN_SPEED); 
+  chassis.wait_drive();
+
+  open_wings();
+
+  chassis.set_drive_pid(-24, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  close_wings();
+  
+  chassis.set_turn_pid(-90, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-24, DRIVE_SPEED);
+  chassis.wait_drive();
 }
 
 ///
@@ -239,37 +280,23 @@ void near_elim(){
 ///
 void far_elim(){ 
   // initialize
-  chassis.set_angle(0);
+  chassis.set_angle(-35);
   blocker.set_value(1);
-
   intake.move_velocity(200);
 
-  // push alliance triball to the middle
-  chassis.set_drive_pid(24, DRIVE_SPEED);
-  chassis.wait_until(20);
-  intake.move_velocity(-100);
+  // fetch middle triball and push 2 in goal
+
+  chassis.set_drive_pid(60, DRIVE_SPEED);
   chassis.wait_drive();
 
-  // fetch middle triball and push 3 in goal
-  intake.move_velocity(0);
-  
-  chassis.set_turn_pid(-45, TURN_SPEED);
+  chassis.set_turn_pid(85, TURN_SPEED);
   chassis.wait_drive();
 
-  intake.move_velocity(200);
-
-  chassis.set_drive_pid(30*SQRT2, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(90, TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(28, DRIVE_SPEED);
-  chassis.wait_until(8);
-  intake.move_velocity(0);
+  chassis.set_drive_pid(30, DRIVE_SPEED);
   chassis.wait_drive();
 
   // fetch the other triball near the barrier
+  
   chassis.set_drive_pid(-10, DRIVE_SPEED);
   chassis.wait_drive();
 
@@ -278,58 +305,57 @@ void far_elim(){
 
   intake.move_velocity(200);
 
-  chassis.set_drive_pid(20, DRIVE_SPEED);
+  chassis.set_drive_pid(26, DRIVE_SPEED);
   chassis.wait_drive();
 
-  // place triball on field
-  chassis.set_turn_pid(120, TURN_SPEED);
-  chassis.wait_drive();
+  // place triball somewhere
 
-  chassis.set_drive_pid(40, DRIVE_SPEED);
-  chassis.wait_until(20);
-  intake.move_velocity(0);
-  chassis.wait_until(38);
+  chassis.set_turn_pid(130, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(38, DRIVE_SPEED);
+  chassis.wait_until(32);
   intake.move_velocity(-200);
   chassis.wait_drive();
 
-  // fetch the triball under the elevation bar
+  // fetch under bar triball
+
   chassis.set_turn_pid(225, TURN_SPEED);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(10, DRIVE_SPEED);
+  intake.move_velocity(0);
+
+  chassis.set_drive_pid(22, DRIVE_SPEED);
   chassis.wait_drive();
 
-  chassis.set_turn_pid(270, DRIVE_SPEED);
+  chassis.set_turn_pid(270, TURN_SPEED);
   chassis.wait_drive();
 
   intake.move_velocity(200);
 
-  chassis.set_drive_pid(30, DRIVE_SPEED);
+  chassis.set_drive_pid(14, DRIVE_SPEED);
   chassis.wait_drive();
 
-  // turn back to score three triballs in the goal
-  chassis.set_turn_pid(90, TURN_SPEED);
+  pros::delay(300);
+
+  // go back
+
+  chassis.set_drive_pid(-36, DRIVE_SPEED);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(48, DRIVE_SPEED);
-  chassis.wait_until(40);
-  intake.move_velocity(-200);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(-135, TURN_SPEED);
+  chassis.set_turn_pid(225, TURN_SPEED);
   chassis.wait_drive();
 
   open_wings();
 
-  chassis.set_drive_pid(-SQRT2*12, DRIVE_SPEED);
+  chassis.set_drive_pid(-20, DRIVE_SPEED);
   chassis.wait_drive();
 
   close_wings();
 
-  chassis.set_turn_pid(180, TURN_SPEED);
+  chassis.set_turn_pid(10, TURN_SPEED);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(-24, DRIVE_SPEED);
+  chassis.set_drive_pid(16, DRIVE_SPEED);
   chassis.wait_drive();
 }
 
@@ -337,7 +363,146 @@ void far_elim(){
 // Skills
 ///
 void skills(){
+  // initialize heading
+  chassis.set_angle(135);
 
+  blocker.set_value(1);
+
+  // push alliance triball in the opponent's goal with the back of the robot
+  chassis.set_drive_pid(-SQRT2*10, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_swing_pid(ez::RIGHT_SWING, 180, SWING_SPEED);
+  chassis.wait_drive();
+  
+  chassis.set_drive_pid(-14, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  blocker.set_value(0);
+
+  // get to matchload position and start matchloading
+
+  chassis.set_drive_pid(14, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(75, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-2, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  right_wing.set_value(1);
+
+  flywheel.move_velocity(600);
+  pros::delay(30000);
+
+  // get to the other side
+  flywheel.move_velocity(0);
+  right_wing.set_value(0);
+
+  chassis.set_turn_pid(-45, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-24, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-90, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-76, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  // push side goal
+
+  chassis.set_turn_pid(-130, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-32, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-180, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-10, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(10, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-10, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(10, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  // front goal 1
+
+  chassis.set_turn_pid(-240, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-45, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  open_wings();
+
+  chassis.set_turn_pid(-110, TURN_SPEED);
+  chassis.wait_drive();
+
+  
+  chassis.set_drive_pid(-30, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-60, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(30, DRIVE_SPEED);
+  chassis.wait_until(8);
+  close_wings();
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-90, TURN_SPEED);
+  chassis.wait_drive();
+
+  open_wings();
+
+  chassis.set_drive_pid(-30, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(30, DRIVE_SPEED);
+  chassis.wait_until(10);
+  close_wings();
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-135, TURN_SPEED);
+  chassis.wait_drive();
+
+
+  chassis.set_drive_pid(-40, DRIVE_SPEED);
+  chassis.wait_drive();
+  
+  chassis.set_turn_pid(-90, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-10, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-60, TURN_SPEED);
+  chassis.wait_drive();
+  
+  chassis.set_drive_pid(-10, DRIVE_SPEED);
+  chassis.wait_drive();
+  
+  chassis.set_turn_pid(0, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-20, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(10, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-10, DRIVE_SPEED);
+  chassis.wait_drive();
 }
 
 
