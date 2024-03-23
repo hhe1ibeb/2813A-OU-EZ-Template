@@ -94,7 +94,7 @@ void near_qual(){
   chassis.wait_drive();
 
   // push the triball from the match load zone
-  chassis.set_drive_pid(8, DRIVE_SPEED);
+  chassis.set_drive_pid(12, DRIVE_SPEED);
   chassis.wait_drive();
 
   chassis.set_turn_pid(-0, TURN_SPEED);
@@ -246,33 +246,33 @@ void near_elim(){
   chassis.set_drive_pid(-30, DRIVE_SPEED);
   chassis.wait_drive();
 
-  chassis.set_turn_pid(90, TURN_SPEED);
-  chassis.wait_drive();
+  // chassis.set_turn_pid(90, TURN_SPEED);
+  // chassis.wait_drive();
 
-  chassis.set_drive_pid(-26, DRIVE_SPEED);
-  chassis.wait_drive();
+  // chassis.set_drive_pid(-28, DRIVE_SPEED);
+  // chassis.wait_drive();
 
-  chassis.set_turn_pid(0, TURN_SPEED);
-  chassis.wait_drive();
+  // chassis.set_turn_pid(0, TURN_SPEED);
+  // chassis.wait_drive();
 
-  chassis.set_drive_pid(-10, DRIVE_SPEED);
-  chassis.wait_drive();
+  // chassis.set_drive_pid(-8, DRIVE_SPEED);
+  // chassis.wait_drive();
 
-  chassis.set_turn_pid(-45, TURN_SPEED); 
-  chassis.wait_drive();
+  // chassis.set_turn_pid(-45, TURN_SPEED); 
+  // chassis.wait_drive();
 
-  open_wings();
+  // open_wings();
 
-  chassis.set_drive_pid(-24, DRIVE_SPEED);
-  chassis.wait_drive();
+  // chassis.set_drive_pid(-24, DRIVE_SPEED);
+  // chassis.wait_drive();
 
-  close_wings();
+  // close_wings();
   
-  chassis.set_turn_pid(-90, DRIVE_SPEED);
-  chassis.wait_drive();
+  // chassis.set_turn_pid(-90, DRIVE_SPEED);
+  // chassis.wait_drive();
 
-  chassis.set_drive_pid(-24, DRIVE_SPEED);
-  chassis.wait_drive();
+  // chassis.set_drive_pid(-24, DRIVE_SPEED);
+  // chassis.wait_drive();
 }
 
 ///
@@ -303,9 +303,8 @@ void far_elim(){
   chassis.set_turn_pid(230, TURN_SPEED);
   chassis.wait_drive();
 
-  intake.move_velocity(200);
-
   chassis.set_drive_pid(26, DRIVE_SPEED);
+  intake.move_velocity(200);
   chassis.wait_drive();
 
   // place triball somewhere
@@ -357,6 +356,9 @@ void far_elim(){
 
   chassis.set_drive_pid(16, DRIVE_SPEED);
   chassis.wait_drive();
+
+  chassis.set_drive_pid(-10, DRIVE_SPEED);
+  chassis.wait_drive();
 }
 
 ///
@@ -391,14 +393,14 @@ void skills(){
   chassis.set_drive_pid(-2, DRIVE_SPEED);
   chassis.wait_drive();
 
-  right_wing.set_value(1);
+  open_wings();
 
   flywheel.move_velocity(600);
   pros::delay(30000);
 
   // get to the other side
   flywheel.move_velocity(0);
-  right_wing.set_value(0);
+  close_wings();
 
   chassis.set_turn_pid(-45, TURN_SPEED);
   chassis.wait_drive();
@@ -445,57 +447,64 @@ void skills(){
 
   open_wings();
 
+  chassis.set_turn_pid(-180, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-8, DRIVE_SPEED);
+  chassis.wait_drive();
+
   chassis.set_turn_pid(-110, TURN_SPEED);
   chassis.wait_drive();
 
-  
-  chassis.set_drive_pid(-30, DRIVE_SPEED);
+  chassis.set_drive_pid(-25, DRIVE_SPEED);
   chassis.wait_drive();
 
-  chassis.set_turn_pid(-60, TURN_SPEED);
-  chassis.wait_drive();
+  // step back and push front goal 2
 
   chassis.set_drive_pid(30, DRIVE_SPEED);
-  chassis.wait_until(8);
-  close_wings();
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-180, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-30, DRIVE_SPEED);
   chassis.wait_drive();
 
   chassis.set_turn_pid(-90, TURN_SPEED);
   chassis.wait_drive();
 
-  open_wings();
-
   chassis.set_drive_pid(-30, DRIVE_SPEED);
   chassis.wait_drive();
 
   chassis.set_drive_pid(30, DRIVE_SPEED);
-  chassis.wait_until(10);
-  close_wings();
   chassis.wait_drive();
 
-  chassis.set_turn_pid(-135, TURN_SPEED);
+  // push other side goal
+
+  chassis.set_turn_pid(-140, TURN_SPEED);
   chassis.wait_drive();
 
-
-  chassis.set_drive_pid(-40, DRIVE_SPEED);
+  chassis.set_drive_pid(-50, DRIVE_SPEED);
   chassis.wait_drive();
   
   chassis.set_turn_pid(-90, TURN_SPEED);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(-10, DRIVE_SPEED);
+  chassis.set_drive_pid(-20, DRIVE_SPEED);
   chassis.wait_drive();
+
+  close_wings();
 
   chassis.set_turn_pid(-60, TURN_SPEED);
   chassis.wait_drive();
   
-  chassis.set_drive_pid(-10, DRIVE_SPEED);
+  chassis.set_drive_pid(-12, DRIVE_SPEED);
   chassis.wait_drive();
   
   chassis.set_turn_pid(0, TURN_SPEED);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(-20, DRIVE_SPEED);
+  chassis.set_drive_pid(-15, DRIVE_SPEED);
   chassis.wait_drive();
 
   chassis.set_drive_pid(10, DRIVE_SPEED);

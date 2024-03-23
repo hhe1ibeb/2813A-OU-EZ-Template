@@ -14,7 +14,7 @@ void opcontrol(){
     bool blocking = 0;
     bool celebrating = 0;
     bool matchloading = 0;
-    side_hang.set_value(0);
+    bool side = 0;
 
     while (true) {
         chassis.arcade_standard(ez::SPLIT); // Standard split arcade
@@ -27,7 +27,7 @@ void opcontrol(){
 			intake.move_velocity(0);
 		}
 
-        if(master.get_digital_new_press(DIGITAL_A)){
+        if(master.get_digital_new_press(DIGITAL_Y)){
             matchloading = !matchloading;
         } 
 
@@ -53,16 +53,14 @@ void opcontrol(){
             blocking = !blocking;
         }
 
-        if(master.get_digital_new_press(DIGITAL_X)){
-            side_hang.set_value(1);
-        }
-        if(master.get_digital_new_press(DIGITAL_Y)){
-            side_hang.set_value(0);
+        if(master.get_digital_new_press(DIGITAL_RIGHT)){
+            side = !side;
         }
 
         right_wing.set_value(rwing);
         left_wing.set_value(lwing);
         blocker.set_value(blocking);
+        side_hang.set_value(side);
 
 
         pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
